@@ -49,6 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       success: { (accessToken: BDBOAuth1Credential!) -> Void in
         println("Got the access token")
         TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
+        TwitterClient.sharedInstance.GET(
+          "1.1/account/verify_credentials.json",
+          parameters: nil,
+          success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println("user: \(response)")
+          },
+          failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println("failed to get current user")
+          }
+        )
       },
       failure: { (error: NSError!) -> Void in
         println("Failed to get the access token")
