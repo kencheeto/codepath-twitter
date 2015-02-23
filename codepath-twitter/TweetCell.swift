@@ -10,6 +10,7 @@ import UIKit
 
 class TweetCell: UITableViewCell {
 
+  @IBOutlet weak var realNameLabel: UILabel!
   @IBOutlet weak var tweetUserLabel: UILabel!
   @IBOutlet weak var tweetTextLabel: UILabel!
   @IBOutlet weak var profileImageView: UIImageView!
@@ -24,8 +25,6 @@ class TweetCell: UITableViewCell {
 
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-
-    // Configure the view for the selected state
   }
 
 }
