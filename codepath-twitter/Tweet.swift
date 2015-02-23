@@ -27,7 +27,6 @@ class Tweet: NSObject {
     createdAt = formatter.dateFromString(createdAtString!)
 
     if let imageUrlString = user?.profileImageUrl as String? {
-      println("setting image url")
       imageUrl = NSURL(string: imageUrlString as String!)
     }
   }

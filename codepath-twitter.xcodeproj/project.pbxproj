@@ -19,6 +19,7 @@
 		E36852521A9A496300AD80C8 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36852511A9A496300AD80C8 /* Tweet.swift */; };
 		E3A5E4821A9A62020054B6E2 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5E4811A9A62020054B6E2 /* TweetsViewController.swift */; };
 		E3A5E4841A9AA9310054B6E2 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5E4831A9AA9310054B6E2 /* TweetCell.swift */; };
+		E3A5E4861A9AC6080054B6E2 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5E4851A9AC6080054B6E2 /* TimeAgo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		E36852511A9A496300AD80C8 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		E3A5E4811A9A62020054B6E2 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		E3A5E4831A9AA9310054B6E2 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		E3A5E4851A9AC6080054B6E2 /* TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E36852441A99D43900AD80C8 /* codepath-twitter-Bridging-Header.h */,
 				E3A5E4811A9A62020054B6E2 /* TweetsViewController.swift */,
 				E3A5E4831A9AA9310054B6E2 /* TweetCell.swift */,
+				E3A5E4851A9AC6080054B6E2 /* TimeAgo.swift */,
 			);
 			path = "codepath-twitter";
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				E3A5E4821A9A62020054B6E2 /* TweetsViewController.swift in Sources */,
 				E34644381A99D1C8003E5F44 /* ViewController.swift in Sources */,
 				E36852481A99D49000AD80C8 /* TwitterClient.swift in Sources */,
+				E3A5E4861A9AC6080054B6E2 /* TimeAgo.swift in Sources */,
 				E34644361A99D1C8003E5F44 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

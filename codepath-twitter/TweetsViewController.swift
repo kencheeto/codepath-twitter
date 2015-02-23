@@ -67,6 +67,7 @@ extension TweetsViewController: UITableViewDataSource {
     let tweets = Tweet.timelineTweets!
     var tweet = tweets[indexPath.row]
     cell.tweetTextLabel.text = tweet.text
+    cell.timestampLabel.text = timeAgoSinceDate(tweet.createdAt!)
     if tweet.user != nil {
       cell.tweetUserLabel.text = "@\(tweet.user!.screenName!)"
       cell.profileImageView.setImageWithURL(tweet.imageUrl)
