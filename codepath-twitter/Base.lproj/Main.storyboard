@@ -40,7 +40,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Timeline-->
+        <!--Twitter-->
         <scene sceneID="zHT-Fi-qyu">
             <objects>
                 <viewController storyboardIdentifier="TweetsViewController" id="bBz-uf-5PZ" customClass="TweetsViewController" customModule="codepath_twitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -122,8 +122,9 @@
                             <constraint firstItem="8av-3t-b3G" firstAttribute="top" secondItem="O0q-6p-oFD" secondAttribute="top" id="rrh-yn-Jlb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Timeline" id="a4I-wV-s3L">
+                    <navigationItem key="navigationItem" title="Twitter" id="a4I-wV-s3L">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="ehp-wS-9qb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onLogout:" destination="bBz-uf-5PZ" id="dFb-jq-Bvv"/>
                             </connections>
