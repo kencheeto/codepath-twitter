@@ -11,29 +11,36 @@ import UIKit
 class TweetsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  
+  private var refreshControl: UIRefreshControl!
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
+
     tableView.delegate = self
     tableView.dataSource = self
-    
+
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshedTimelineTweets", name: "refreshedTimelineTweets", object: nil)
-    
-    println("fetching timeline tweets")
-    
     TwitterClient.sharedInstance.fetchTimelineTweets()
+
+    refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+    tableView.insertSubview(refreshControl, atIndex: 0)
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  
-  
+
   func refreshedTimelineTweets() {
-    println("notified that timeline tweets refreshed!")
+    println("notified that timeline tweets refreshed")
     tableView.reloadData()
+  }
+
+  func onRefresh() {
+    refreshedTimelineTweets()
+    refreshControl.endRefreshing()
   }
   /*
   // MARK: - Navigation
