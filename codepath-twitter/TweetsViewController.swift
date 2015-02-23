@@ -64,6 +64,7 @@ extension TweetsViewController: UITableViewDataSource {
     let tweets = Tweet.timelineTweets!
     var tweet = tweets[indexPath.row]
     cell.tweetTextLabel.text = tweet.text
+    cell.profileImageView.setImageWithURL(tweet.imageUrl)
     return cell
   }
   

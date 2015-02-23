@@ -15,6 +15,7 @@ class Tweet: NSObject {
   var text: String?
   var createdAtString: String?
   var createdAt: NSDate?
+  var imageUrl: NSURL?
   
   init(dictionary: NSDictionary) {
     user = User(dictionary: dictionary["user"] as NSDictionary)
@@ -24,6 +25,11 @@ class Tweet: NSObject {
     var formatter = NSDateFormatter()
     formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
     createdAt = formatter.dateFromString(createdAtString!)
+
+    if let imageUrlString = user?.profileImageUrl as String? {
+      println("setting image url")
+      imageUrl = NSURL(string: imageUrlString as String!)
+    }
   }
   
   class func tweetsFromArray(array: [NSDictionary]) -> [Tweet] {
