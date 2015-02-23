@@ -26,6 +26,9 @@ class TweetsViewController: UIViewController {
     refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
     tableView.insertSubview(refreshControl, atIndex: 0)
+
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 100
   }
   
   override func didReceiveMemoryWarning() {
@@ -64,7 +67,10 @@ extension TweetsViewController: UITableViewDataSource {
     let tweets = Tweet.timelineTweets!
     var tweet = tweets[indexPath.row]
     cell.tweetTextLabel.text = tweet.text
-    cell.profileImageView.setImageWithURL(tweet.imageUrl)
+    if tweet.user != nil {
+      cell.tweetUserLabel.text = "@\(tweet.user!.screenName!)"
+      cell.profileImageView.setImageWithURL(tweet.imageUrl)
+    }
     return cell
   }
   

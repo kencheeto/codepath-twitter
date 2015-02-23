@@ -40,7 +40,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Title-->
+        <!--Timeline-->
         <scene sceneID="zHT-Fi-qyu">
             <objects>
                 <viewController storyboardIdentifier="TweetsViewController" id="bBz-uf-5PZ" customClass="TweetsViewController" customModule="codepath_twitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,24 +69,37 @@
                                                         <constraint firstAttribute="width" constant="73" id="bZ0-jM-IDq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cO-J8-Cus">
-                                                    <rect key="frame" x="85" y="8" width="507" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweet text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cO-J8-Cus">
+                                                    <rect key="frame" x="85" y="33" width="507" height="79"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweet username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6h-uh-oRP">
+                                                    <rect key="frame" x="85" y="8" width="126.5" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="T2U-lZ-Dhg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="3cO-J8-Cus" secondAttribute="trailing" id="66m-7y-bpH"/>
+                                                <constraint firstItem="u6h-uh-oRP" firstAttribute="top" secondItem="9ib-1s-rZh" secondAttribute="topMargin" id="C6B-9D-PtH"/>
+                                                <constraint firstItem="u6h-uh-oRP" firstAttribute="leading" secondItem="vc7-5j-Ict" secondAttribute="trailing" constant="4" id="CHF-GN-pYB"/>
                                                 <constraint firstItem="vc7-5j-Ict" firstAttribute="leading" secondItem="9ib-1s-rZh" secondAttribute="leadingMargin" id="EYg-o3-tsh"/>
                                                 <constraint firstItem="3cO-J8-Cus" firstAttribute="leading" secondItem="vc7-5j-Ict" secondAttribute="trailing" constant="4" id="L6L-a0-Xa3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3cO-J8-Cus" secondAttribute="trailing" id="MTK-gl-iyu"/>
                                                 <constraint firstItem="vc7-5j-Ict" firstAttribute="top" secondItem="9ib-1s-rZh" secondAttribute="topMargin" id="PVF-w9-fL1"/>
-                                                <constraint firstItem="3cO-J8-Cus" firstAttribute="top" secondItem="9ib-1s-rZh" secondAttribute="topMargin" id="nXE-XF-8bB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3cO-J8-Cus" secondAttribute="bottom" constant="4" id="ojL-sc-rVL"/>
+                                                <constraint firstItem="3cO-J8-Cus" firstAttribute="top" secondItem="u6h-uh-oRP" secondAttribute="bottom" constant="4" id="ojn-Q0-K8E"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="profileImageView" destination="vc7-5j-Ict" id="S83-WZ-pJ5"/>
                                             <outlet property="tweetTextLabel" destination="3cO-J8-Cus" id="5Xv-1k-V2g"/>
+                                            <outlet property="tweetUserLabel" destination="u6h-uh-oRP" id="7Rp-Do-geL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -100,7 +113,7 @@
                             <constraint firstItem="8av-3t-b3G" firstAttribute="top" secondItem="O0q-6p-oFD" secondAttribute="top" id="rrh-yn-Jlb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="a4I-wV-s3L">
+                    <navigationItem key="navigationItem" title="Timeline" id="a4I-wV-s3L">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="ehp-wS-9qb">
                             <connections>
                                 <action selector="onLogout:" destination="bBz-uf-5PZ" id="dFb-jq-Bvv"/>

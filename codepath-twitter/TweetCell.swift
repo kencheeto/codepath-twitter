@@ -10,12 +10,15 @@ import UIKit
 
 class TweetCell: UITableViewCell {
 
+  @IBOutlet weak var tweetUserLabel: UILabel!
   @IBOutlet weak var tweetTextLabel: UILabel!
   @IBOutlet weak var profileImageView: UIImageView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    separatorInset = UIEdgeInsetsZero
+    preservesSuperviewLayoutMargins = false
+    layoutMargins = UIEdgeInsetsZero
   }
 
   override func setSelected(selected: Bool, animated: Bool) {
