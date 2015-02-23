@@ -18,6 +18,7 @@
 		E36852501A9A46E300AD80C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368524F1A9A46E300AD80C8 /* User.swift */; };
 		E36852521A9A496300AD80C8 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36852511A9A496300AD80C8 /* Tweet.swift */; };
 		E3A5E4821A9A62020054B6E2 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5E4811A9A62020054B6E2 /* TweetsViewController.swift */; };
+		E3A5E4841A9AA9310054B6E2 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5E4831A9AA9310054B6E2 /* TweetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E368524F1A9A46E300AD80C8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E36852511A9A496300AD80C8 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		E3A5E4811A9A62020054B6E2 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		E3A5E4831A9AA9310054B6E2 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				E34644331A99D1C8003E5F44 /* Supporting Files */,
 				E36852441A99D43900AD80C8 /* codepath-twitter-Bridging-Header.h */,
 				E3A5E4811A9A62020054B6E2 /* TweetsViewController.swift */,
+				E3A5E4831A9AA9310054B6E2 /* TweetCell.swift */,
 			);
 			path = "codepath-twitter";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36852501A9A46E300AD80C8 /* User.swift in Sources */,
+				E3A5E4841A9AA9310054B6E2 /* TweetCell.swift in Sources */,
 				E36852521A9A496300AD80C8 /* Tweet.swift in Sources */,
 				E3A5E4821A9A62020054B6E2 /* TweetsViewController.swift in Sources */,
 				E34644381A99D1C8003E5F44 /* ViewController.swift in Sources */,

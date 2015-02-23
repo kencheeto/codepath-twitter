@@ -8,6 +8,8 @@
 
 import UIKit
 
+var _timelineTweets: [Tweet]?
+
 class Tweet: NSObject {
   var user: User?
   var text: String?
@@ -24,7 +26,7 @@ class Tweet: NSObject {
     createdAt = formatter.dateFromString(createdAtString!)
   }
   
-  class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
+  class func tweetsFromArray(array: [NSDictionary]) -> [Tweet] {
     var tweets = [Tweet]()
     
     for dictionary in array {
@@ -32,5 +34,15 @@ class Tweet: NSObject {
     }
     
     return tweets
+  }
+  
+  class var timelineTweets: [Tweet]? {
+    get {
+      return _timelineTweets
+    }
+    
+    set(tweets) {
+      _timelineTweets = tweets
+    }
   }
 }

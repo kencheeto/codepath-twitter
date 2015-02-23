@@ -61,10 +61,8 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
           "1.1/account/verify_credentials.json",
           parameters: nil,
           success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            //            println("user: \(response)")
             var user = User(dictionary: response as NSDictionary)
             User.currentUser = user
-            println("user: \(user.name)")
             self.loginCompletion?(user: user, error: nil)
           },
           failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
@@ -73,21 +71,8 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
           }
         )
         
-        TwitterClient.sharedInstance.GET(
-          "1.1/statuses/home_timeline.json",
-          parameters: nil,
-          success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            println("home timeline: \(response)")
-            var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
-            
-            for tweet in tweets {
-              println("text: \(tweet.text), created at: \(tweet.createdAt)")
-            }
-          },
-          failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-            println("failed to get current user")
-          }
-        )
+        TwitterClient.sharedInstance.fetchTimelineTweets()
+
       },
       failure: { (error: NSError!) -> Void in
         println("Failed to get the access token")
@@ -95,4 +80,18 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     )
   }
   
+  func fetchTimelineTweets() {
+    TwitterClient.sharedInstance.GET(
+      "1.1/statuses/home_timeline.json",
+      parameters: nil,
+      success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        var tweets = Tweet.tweetsFromArray(response as [NSDictionary])
+        Tweet.timelineTweets = tweets
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshedTimelineTweets", object: nil)
+      },
+      failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+        println("failed to get current user")
+      }
+    )
+  }
 }
