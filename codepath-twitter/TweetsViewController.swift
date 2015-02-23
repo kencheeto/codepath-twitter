@@ -30,7 +30,7 @@ class TweetsViewController: UIViewController {
     tableView.insertSubview(refreshControl, atIndex: 0)
 
     tableView.rowHeight = UITableViewAutomaticDimension
-//    tableView.estimatedRowHeight = 100
+    tableView.estimatedRowHeight = 100
   }
   
   override func didReceiveMemoryWarning() {
