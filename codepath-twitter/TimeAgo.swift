@@ -18,7 +18,6 @@ func timeAgoSinceDate(date:NSDate) -> String {
   formatter.dateFormat = "d/m/y"
   let dateString = formatter.stringFromDate(date)
 
-
   if (components.day >= 7) {
     return dateString
   } else if (components.day >= 2) {

@@ -32,14 +32,9 @@ class TweetsViewController: UIViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100
   }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
 
   func refreshedTimelineTweets() {
-    println("notified that timeline tweets refreshed")
+    println("timeline tweets refreshed")
     tableView.reloadData()
   }
 
@@ -47,15 +42,6 @@ class TweetsViewController: UIViewController {
     refreshedTimelineTweets()
     refreshControl.endRefreshing()
   }
-  /*
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-  // Get the new view controller using segue.destinationViewController.
-  // Pass the selected object to the new view controller.
-  }
-  */
   
   @IBAction func onLogout(sender: AnyObject) {
     User.currentUser?.logout()
@@ -75,6 +61,17 @@ extension TweetsViewController: UITableViewDataSource {
       cell.profileImageView.setImageWithURL(tweet.imageUrl)
       cell.realNameLabel.text = tweet.user!.name
     }
+    if tweet.favorited == true {
+      cell.favoritedLabel.text = "favorited"
+    } else {
+      cell.favoritedLabel.hidden = true
+    }
+    if tweet.retweeted == true {
+      cell.retweetedLabel.text = "retweeted"
+    } else {
+      cell.retweetedLabel.hidden = true
+    }
+    cell.tweet = tweet
     return cell
   }
   
@@ -83,6 +80,18 @@ extension TweetsViewController: UITableViewDataSource {
       return count
     }
     return 0
+  }
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    var navVC = segue.destinationViewController as UINavigationController
+    var vc = navVC.topViewController as DetailViewController
+    if segue.identifier == "NewSegue" {
+      println("no existing tweet")
+    } else {
+      var cell = sender as TweetCell!
+      println("setting tweet on segue")
+      vc.tweet = cell.tweet
+    }
   }
 }
 

@@ -72,7 +72,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         )
         
         TwitterClient.sharedInstance.fetchTimelineTweets()
-
       },
       failure: { (error: NSError!) -> Void in
         println("Failed to get the access token")
@@ -81,6 +80,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
   }
   
   func fetchTimelineTweets() {
+    Tweet.timelineTweets = nil
     TwitterClient.sharedInstance.GET(
       "1.1/statuses/home_timeline.json",
       parameters: nil,
@@ -91,6 +91,63 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
       },
       failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
         println("failed to get current user")
+      }
+    )
+  }
+
+  func tweet(text: String) {
+    TwitterClient.sharedInstance.POST(
+      "1.1/statuses/update.json",
+      parameters: ["status": text],
+      success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        println("posted tweet: \(text)")
+      },
+      failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+        println("failed to get current user")
+        println(error)
+      }
+    )
+  }
+
+  func reply(text: String, id: Int) {
+    TwitterClient.sharedInstance.POST(
+      "1.1/statuses/update.json",
+      parameters: [
+        "status": text,
+        "in_reply_to_status_id": id
+      ],
+      success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        println("replied to tweet: \(text)")
+      },
+      failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+        println("failed reply")
+        println(error)
+      }
+    )
+  }
+  func favorite(id: Int) {
+    TwitterClient.sharedInstance.POST(
+      "1.1/favorites/create.json",
+      parameters: ["id": id],
+      success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        println("favorited tweet: \(id)")
+      },
+      failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+        println("failed to favorite")
+        println(error)
+      }
+    )
+  }
+  func retweet(id: Int) {
+    TwitterClient.sharedInstance.POST(
+      "1.1/statuses/retweet/\(id).json",
+      parameters: ["id": id],
+      success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        println("retweeted tweet: \(id)")
+      },
+      failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+        println("failed to retweet")
+        println(error)
       }
     )
   }

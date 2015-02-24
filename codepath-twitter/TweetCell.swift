@@ -8,14 +8,17 @@
 
 import UIKit
 
-class TweetCell: UITableViewCell {
+final class TweetCell: UITableViewCell {
 
   @IBOutlet weak var realNameLabel: UILabel!
   @IBOutlet weak var tweetUserLabel: UILabel!
   @IBOutlet weak var tweetTextLabel: UILabel!
   @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var timestampLabel: UILabel!
+  @IBOutlet weak var favoritedLabel: UILabel!
+  @IBOutlet weak var retweetedLabel: UILabel!
 
+  var tweet: Tweet?
   override func awakeFromNib() {
     super.awakeFromNib()
     separatorInset = UIEdgeInsetsZero
@@ -23,8 +26,8 @@ class TweetCell: UITableViewCell {
     layoutMargins = UIEdgeInsetsZero
   }
 
-  override func setSelected(selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
+//  override func setSelected(selected: Bool, animated: Bool) {
+//    super.setSelected(selected, animated: animated)
+//  }
 
 }
