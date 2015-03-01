@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B78A936F8835386FD043613 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F649A5EB637BCF45C93CF34 /* libPods.a */; };
+		E311BD541AA309E80069C036 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E311BD531AA309E80069C036 /* MenuViewController.swift */; };
 		E34644361A99D1C8003E5F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34644351A99D1C8003E5F44 /* AppDelegate.swift */; };
 		E34644381A99D1C8003E5F44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34644371A99D1C8003E5F44 /* ViewController.swift */; };
 		E346443B1A99D1C8003E5F44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E34644391A99D1C8003E5F44 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		479D547CC6262069469E6BBA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8F649A5EB637BCF45C93CF34 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		935D667CE0128D55ED41AEA9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E311BD531AA309E80069C036 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E34644301A99D1C8003E5F44 /* codepath-twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "codepath-twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34644341A99D1C8003E5F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E34644351A99D1C8003E5F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				E34644351A99D1C8003E5F44 /* AppDelegate.swift */,
 				E34644371A99D1C8003E5F44 /* ViewController.swift */,
 				E34644391A99D1C8003E5F44 /* Main.storyboard */,
+				E311BD531AA309E80069C036 /* MenuViewController.swift */,
 				E346443C1A99D1C8003E5F44 /* Images.xcassets */,
 				E346443E1A99D1C8003E5F44 /* LaunchScreen.xib */,
 				E34644331A99D1C8003E5F44 /* Supporting Files */,
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E38139661A9C037B00DE71D8 /* DetailViewController.swift in Sources */,
+				E311BD541AA309E80069C036 /* MenuViewController.swift in Sources */,
 				E36852501A9A46E300AD80C8 /* User.swift in Sources */,
 				E3A5E4841A9AA9310054B6E2 /* TweetCell.swift in Sources */,
 				E36852521A9A496300AD80C8 /* Tweet.swift in Sources */,

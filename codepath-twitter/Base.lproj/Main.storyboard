@@ -40,6 +40,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="C9c-qr-eIR">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="rG2-YY-RgY" customClass="MenuViewController" customModule="codepath_twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="doh-lD-9ck"/>
+                        <viewControllerLayoutGuide type="bottom" id="w0q-Pp-0J4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kn8-22-6Cu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-W7-efN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rng-i2-3ar">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rng-i2-3ar" id="nm1-ac-eHK">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Jm7-W7-efN" secondAttribute="trailing" id="DfL-EA-yRr"/>
+                            <constraint firstItem="w0q-Pp-0J4" firstAttribute="top" secondItem="Jm7-W7-efN" secondAttribute="bottom" id="ckD-pY-VxO"/>
+                            <constraint firstItem="Jm7-W7-efN" firstAttribute="top" secondItem="kn8-22-6Cu" secondAttribute="top" id="e99-j2-kuW"/>
+                            <constraint firstItem="Jm7-W7-efN" firstAttribute="leading" secondItem="kn8-22-6Cu" secondAttribute="leading" id="q5c-80-TOD"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qnh-PC-QQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757" y="-371"/>
+        </scene>
         <!--Twitter-->
         <scene sceneID="zHT-Fi-qyu">
             <objects>
@@ -145,7 +183,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrw-D0-fsx">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrw-D0-fsx">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>

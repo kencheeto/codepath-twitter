@@ -17,7 +17,9 @@ class TweetsViewController: UIViewController {
   @IBOutlet var menuGesture: UISwipeGestureRecognizer!
   
   @IBOutlet weak var menuView: UIView!
-  
+  var menuViewController: MenuViewController!
+//  var menuViewController = MenuViewController()
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -29,7 +31,8 @@ class TweetsViewController: UIViewController {
 
     menuGesture.delegate = self
     menuView.hidden = true
-
+    menuViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController") as MenuViewController
+    
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshedTimelineTweets", name: "refreshedTimelineTweets", object: nil)
     TwitterClient.sharedInstance.fetchTimelineTweets()
 
@@ -38,13 +41,15 @@ class TweetsViewController: UIViewController {
     tableView.insertSubview(refreshControl, atIndex: 0)
 
     tableView.rowHeight = UITableViewAutomaticDimension
-
-    
     tableView.estimatedRowHeight = 100
   }
 
   @IBAction func didOpenMenu(sender: AnyObject) {
     println("did swipe")
+    addChildViewController(menuViewController)
+    menuView.addSubview(menuViewController.view)
+    menuViewController.view.frame = menuView.bounds
+    menuViewController.didMoveToParentViewController(self)
     menuView.hidden = false
   }
   
