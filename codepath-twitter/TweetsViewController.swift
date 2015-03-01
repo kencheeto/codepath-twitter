@@ -11,23 +11,24 @@ import UIKit
 class TweetsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-
-  private var refreshControl: UIRefreshControl!
-
   @IBOutlet var menuGesture: UISwipeGestureRecognizer!
-  
   @IBOutlet weak var menuView: UIView!
+  
   var menuViewController: MenuViewController!
-//  var menuViewController = MenuViewController()
+  private var refreshControl: UIRefreshControl!
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationController?.navigationBar.barTintColor = UIColor(red: 0.33203125, green: 0.671875, blue: 0.9296875, alpha: 1)
+    navigationController?.navigationBar.barTintColor = TwitterColor
     navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
-    tableView.delegate = self
     tableView.dataSource = self
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 100
+    refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+    tableView.insertSubview(refreshControl, atIndex: 0)
 
     menuGesture.delegate = self
     menuView.hidden = true
@@ -35,13 +36,6 @@ class TweetsViewController: UIViewController {
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshedTimelineTweets", name: "refreshedTimelineTweets", object: nil)
     TwitterClient.sharedInstance.fetchTimelineTweets()
-
-    refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-    tableView.insertSubview(refreshControl, atIndex: 0)
-
-    tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 100
   }
 
   @IBAction func didOpenMenu(sender: AnyObject) {
@@ -77,26 +71,7 @@ class TweetsViewController: UIViewController {
 extension TweetsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
-    let tweets = Tweet.timelineTweets!
-    var tweet = tweets[indexPath.row]
-    cell.tweetTextLabel.text = tweet.text
-    cell.timestampLabel.text = timeAgoSinceDate(tweet.createdAt!)
-    if tweet.user != nil {
-      cell.tweetUserLabel.text = "@\(tweet.user!.screenName!)"
-      cell.profileImageView.setImageWithURL(tweet.imageUrl)
-      cell.realNameLabel.text = tweet.user!.name
-    }
-    if tweet.favorited == true {
-      cell.favoritedLabel.text = "favorited"
-    } else {
-      cell.favoritedLabel.hidden = true
-    }
-    if tweet.retweeted == true {
-      cell.retweetedLabel.text = "retweeted"
-    } else {
-      cell.retweetedLabel.hidden = true
-    }
-    cell.tweet = tweet
+    cell.tweet = Tweet.timelineTweets![indexPath.row]
     return cell
   }
   
@@ -122,10 +97,5 @@ extension TweetsViewController: UITableViewDataSource {
 
 // MARK: - UIGestureRecognizerDelegate
 extension TweetsViewController: UIGestureRecognizerDelegate {
-  
-}
-
-// MARK: - UITableViewDelegate
-extension TweetsViewController: UITableViewDelegate {
   
 }

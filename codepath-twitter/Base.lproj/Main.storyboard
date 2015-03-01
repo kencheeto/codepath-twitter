@@ -52,27 +52,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-W7-efN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-W7-efN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rng-i2-3ar">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuLinkCell" id="rng-i2-3ar" customClass="MenuLinkCell" customModule="codepath_twitter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rng-i2-3ar" id="nm1-ac-eHK">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olm-aJ-G4S">
+                                                    <rect key="frame" x="8" y="11.5" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="olm-aJ-G4S" firstAttribute="leading" secondItem="nm1-ac-eHK" secondAttribute="leadingMargin" id="exZ-dV-zWZ"/>
+                                                <constraint firstAttribute="centerY" secondItem="olm-aJ-G4S" secondAttribute="centerY" id="gMc-0M-wiU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="linkLabel" destination="olm-aJ-G4S" id="rza-0L-yP9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Jm7-W7-efN" secondAttribute="trailing" id="DfL-EA-yRr"/>
-                            <constraint firstItem="w0q-Pp-0J4" firstAttribute="top" secondItem="Jm7-W7-efN" secondAttribute="bottom" id="ckD-pY-VxO"/>
-                            <constraint firstItem="Jm7-W7-efN" firstAttribute="top" secondItem="kn8-22-6Cu" secondAttribute="top" id="e99-j2-kuW"/>
-                            <constraint firstItem="Jm7-W7-efN" firstAttribute="leading" secondItem="kn8-22-6Cu" secondAttribute="leading" id="q5c-80-TOD"/>
-                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Jm7-W7-efN" id="WXQ-3e-uGm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnh-PC-QQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

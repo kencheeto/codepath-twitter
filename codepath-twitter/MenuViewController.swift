@@ -10,27 +10,30 @@ import UIKit
 
 class MenuViewController: UIViewController {
   
+  @IBOutlet weak var tableView: UITableView!
+  private let links = [
+    "Profile",
+    "Timeline",
+    "Mentions"
+  ]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    println("hello")
-    // Do any additional setup after loading the view.
+    tableView.dataSource = self
+    tableView.frame = view.bounds
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+}
+
+extension MenuViewController: UITableViewDataSource {
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return links.count
   }
   
-  
-  /*
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-  // Get the new view controller using segue.destinationViewController.
-  // Pass the selected object to the new view controller.
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    var cell = tableView.dequeueReusableCellWithIdentifier("MenuLinkCell") as MenuLinkCell
+    cell.linkLabel.text = links[indexPath.row]
+    return cell
   }
-  */
-  
 }

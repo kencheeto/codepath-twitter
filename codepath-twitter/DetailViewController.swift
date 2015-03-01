@@ -15,15 +15,16 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var screenNameLabel: UILabel!
   @IBOutlet weak var realNameLabel: UILabel!
   @IBOutlet weak var tweetTextView: UITextView!
-  var tweet: Tweet?
-
   @IBOutlet weak var retweetButton: UIButton!
   @IBOutlet weak var favoriteButton: UIButton!
   @IBOutlet weak var replyButton: UIButton!
+
+  var tweet: Tweet?
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationController?.navigationBar.barTintColor = UIColor(red: 0.33203125, green: 0.671875, blue: 0.9296875, alpha: 1)
+    navigationController?.navigationBar.barTintColor = TwitterColor
     navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
     realNameLabel.text = User.currentUser?.name
@@ -36,9 +37,7 @@ class DetailViewController: UIViewController {
       retweetButton.hidden = true
       favoriteButton.hidden = true
       replyButton.hidden = true
-    }
-
-    if tweet != nil {
+    } else {
       tweetTextView.text = "@\(tweet!.user!.screenName!) "
       tweetButton.title = "Reply"
     }
