@@ -11,8 +11,13 @@ import UIKit
 class TweetsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+
   private var refreshControl: UIRefreshControl!
 
+  @IBOutlet var menuGesture: UISwipeGestureRecognizer!
+  
+  @IBOutlet weak var menuView: UIView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -22,6 +27,9 @@ class TweetsViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
 
+    menuGesture.delegate = self
+    menuView.hidden = true
+
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshedTimelineTweets", name: "refreshedTimelineTweets", object: nil)
     TwitterClient.sharedInstance.fetchTimelineTweets()
 
@@ -30,9 +38,21 @@ class TweetsViewController: UIViewController {
     tableView.insertSubview(refreshControl, atIndex: 0)
 
     tableView.rowHeight = UITableViewAutomaticDimension
+
+    
     tableView.estimatedRowHeight = 100
   }
 
+  @IBAction func didOpenMenu(sender: AnyObject) {
+    println("did swipe")
+    menuView.hidden = false
+  }
+  
+  @IBAction func didCloseMenu(sender: AnyObject) {
+    println("closing menu")
+    menuView.hidden = true
+  }
+  
   func refreshedTimelineTweets() {
     println("timeline tweets refreshed")
     tableView.reloadData()
@@ -93,6 +113,11 @@ extension TweetsViewController: UITableViewDataSource {
       vc.tweet = cell.tweet
     }
   }
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension TweetsViewController: UIGestureRecognizerDelegate {
+  
 }
 
 // MARK: - UITableViewDelegate

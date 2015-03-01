@@ -106,7 +106,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="retweeted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9M-h1-f9M">
-                                                    <rect key="frame" x="536.5" y="44.5" width="55.5" height="14.5"/>
+                                                    <rect key="frame" x="536" y="44" width="55.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -145,14 +145,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrw-D0-fsx">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Rv0-FH-uMK"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="750-Xd-YeR" appends="YES" id="wNj-Xr-nws"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8av-3t-b3G" secondAttribute="trailing" id="1Bd-bf-QQg"/>
                             <constraint firstItem="8av-3t-b3G" firstAttribute="leading" secondItem="O0q-6p-oFD" secondAttribute="leading" id="SkR-kG-Qp0"/>
+                            <constraint firstItem="nrw-D0-fsx" firstAttribute="top" secondItem="O0q-6p-oFD" secondAttribute="top" id="XdM-Mg-VVR"/>
+                            <constraint firstItem="OPt-05-jbt" firstAttribute="top" secondItem="nrw-D0-fsx" secondAttribute="bottom" id="eIW-Jk-s3H"/>
+                            <constraint firstItem="nrw-D0-fsx" firstAttribute="leading" secondItem="O0q-6p-oFD" secondAttribute="leading" id="jSE-wC-hju"/>
                             <constraint firstItem="OPt-05-jbt" firstAttribute="top" secondItem="8av-3t-b3G" secondAttribute="bottom" id="r2r-Co-ewM"/>
                             <constraint firstItem="8av-3t-b3G" firstAttribute="top" secondItem="O0q-6p-oFD" secondAttribute="top" id="rrh-yn-Jlb"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uN4-wA-QQA" appends="YES" id="yfp-sh-Uf1"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Twitter" id="a4I-wV-s3L">
                         <barButtonItem key="leftBarButtonItem" title="Sign out" id="ehp-wS-9qb">
@@ -169,10 +187,22 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuGesture" destination="uN4-wA-QQA" id="Q5i-BR-VpD"/>
+                        <outlet property="menuView" destination="nrw-D0-fsx" id="2YB-QL-bgQ"/>
                         <outlet property="tableView" destination="8av-3t-b3G" id="tev-Lr-SbE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fh8-KH-jlj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="uN4-wA-QQA">
+                    <connections>
+                        <action selector="didOpenMenu:" destination="bBz-uf-5PZ" id="OLs-7g-d79"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="750-Xd-YeR">
+                    <connections>
+                        <action selector="didCloseMenu:" destination="bBz-uf-5PZ" id="VdF-Ij-Iid"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1757" y="287"/>
         </scene>
