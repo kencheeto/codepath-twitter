@@ -26,8 +26,7 @@ final class TweetCell: UITableViewCell {
       timestampLabel.text = timeAgoSinceDate(timestamp!)
       
       if tweet?.user != nil {
-        let name = tweet!.user!.screenName!
-        tweetUserLabel.text = "@\(name)"
+        tweetUserLabel.text = "@\(tweet!.user!.screenName!)"
         profileImageView.setImageWithURL(tweet?.imageUrl)
         realNameLabel.text = tweet?.user!.name
       }
@@ -49,12 +48,7 @@ final class TweetCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     separatorInset = UIEdgeInsetsZero
-    preservesSuperviewLayoutMargins = false
     layoutMargins = UIEdgeInsetsZero
   }
-
-//  override func setSelected(selected: Bool, animated: Bool) {
-//    super.setSelected(selected, animated: animated)
-//  }
 
 }

@@ -11,17 +11,11 @@ import UIKit
 class TweetsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet var menuGesture: UISwipeGestureRecognizer!
-  @IBOutlet weak var menuView: UIView!
-  
-  var menuViewController: MenuViewController!
+
   private var refreshControl: UIRefreshControl!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    navigationController?.navigationBar.barTintColor = TwitterColor
-    navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
     tableView.dataSource = self
     tableView.rowHeight = UITableViewAutomaticDimension
@@ -29,26 +23,9 @@ class TweetsViewController: UIViewController {
     refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
     tableView.insertSubview(refreshControl, atIndex: 0)
-
-    menuView.hidden = true
-    menuViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController") as MenuViewController
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshedTimelineTweets", name: "refreshedTimelineTweets", object: nil)
     TwitterClient.sharedInstance.fetchTimelineTweets()
-  }
-
-  @IBAction func didOpenMenu(sender: AnyObject) {
-    println("did swipe")
-    addChildViewController(menuViewController)
-    menuView.addSubview(menuViewController.view)
-    menuViewController.view.frame = menuView.bounds
-    menuViewController.didMoveToParentViewController(self)
-    menuView.hidden = false
-  }
-  
-  @IBAction func didCloseMenu(sender: AnyObject) {
-    println("closing menu")
-    menuView.hidden = true
   }
   
   func refreshedTimelineTweets() {
@@ -64,9 +41,12 @@ class TweetsViewController: UIViewController {
   @IBAction func onLogout(sender: AnyObject) {
     User.currentUser?.logout()
   }
+  
+  @IBAction func tappedProfileImage(sender: UITapGestureRecognizer) {
+    println("heeey")
+  }
 }
 
-// MARK: - UITableViewDataSource
 extension TweetsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell

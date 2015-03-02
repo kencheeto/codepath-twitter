@@ -36,6 +36,11 @@ class User: NSObject {
     return nil
   }
 
+  var profileBackgroundImageUrl: NSURL {
+    let url = dictionary["profile_background_image_url"] as String
+    return NSURL(string: url)!
+  }
+  
   func logout() {
     User.currentUser = nil
     TwitterClient.sharedInstance.requestSerializer.removeAccessToken()

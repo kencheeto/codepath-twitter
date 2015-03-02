@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if User.currentUser != nil {
       // go to logged in screen
       println("Current user detected")
-      var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavController") as UIViewController
+      var vc = storyboard.instantiateViewControllerWithIdentifier("ContainerViewController") as UIViewController
       window?.rootViewController = vc
     }
     return true
