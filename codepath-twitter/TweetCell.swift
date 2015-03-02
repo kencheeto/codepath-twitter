@@ -22,11 +22,12 @@ final class TweetCell: UITableViewCell {
     didSet {
       tweetTextLabel.text = tweet?.text
       
-      let timestamp = tweet?.createdAt
+      let timestamp = tweet?.createdAt!
       timestampLabel.text = timeAgoSinceDate(timestamp!)
       
       if tweet?.user != nil {
-        tweetUserLabel.text = "@\(tweet?.user!.screenName!)"
+        let name = tweet!.user!.screenName!
+        tweetUserLabel.text = "@\(name)"
         profileImageView.setImageWithURL(tweet?.imageUrl)
         realNameLabel.text = tweet?.user!.name
       }

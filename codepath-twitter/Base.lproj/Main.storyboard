@@ -40,6 +40,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="Cd6-XW-9lI">
+            <objects>
+                <viewController id="49F-1M-5Uy" customClass="ProfileViewController" customModule="codepath_twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1pk-ew-XKR"/>
+                        <viewControllerLayoutGuide type="bottom" id="jBv-KS-tzy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IZM-gV-7UT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Us3-Td-Oo3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="L39-UD-BVp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Us3-Td-Oo3" secondAttribute="trailing" id="4Eu-be-4Ri"/>
+                            <constraint firstItem="Us3-Td-Oo3" firstAttribute="leading" secondItem="IZM-gV-7UT" secondAttribute="leading" id="EBo-gS-e8P"/>
+                            <constraint firstItem="Us3-Td-Oo3" firstAttribute="top" secondItem="IZM-gV-7UT" secondAttribute="top" id="gbs-9l-F3t"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQK-9D-zcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2457" y="-412"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="C9c-qr-eIR">
             <objects>
@@ -84,11 +116,12 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Jm7-W7-efN" id="WXQ-3e-uGm"/>
+                        <segue destination="49F-1M-5Uy" kind="show" id="T9h-6c-QDt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnh-PC-QQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="-371"/>
+            <point key="canvasLocation" x="1757" y="-412"/>
         </scene>
         <!--Twitter-->
         <scene sceneID="zHT-Fi-qyu">
@@ -196,7 +229,7 @@
                                 </prototypes>
                             </tableView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrw-D0-fsx">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="300" height="536"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -212,7 +245,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8av-3t-b3G" secondAttribute="trailing" id="1Bd-bf-QQg"/>
                             <constraint firstItem="8av-3t-b3G" firstAttribute="leading" secondItem="O0q-6p-oFD" secondAttribute="leading" id="SkR-kG-Qp0"/>
-                            <constraint firstItem="nrw-D0-fsx" firstAttribute="top" secondItem="O0q-6p-oFD" secondAttribute="top" id="XdM-Mg-VVR"/>
+                            <constraint firstItem="nrw-D0-fsx" firstAttribute="top" secondItem="O0q-6p-oFD" secondAttribute="top" constant="64" id="XdM-Mg-VVR"/>
                             <constraint firstItem="OPt-05-jbt" firstAttribute="top" secondItem="nrw-D0-fsx" secondAttribute="bottom" id="eIW-Jk-s3H"/>
                             <constraint firstItem="nrw-D0-fsx" firstAttribute="leading" secondItem="O0q-6p-oFD" secondAttribute="leading" id="jSE-wC-hju"/>
                             <constraint firstItem="OPt-05-jbt" firstAttribute="top" secondItem="8av-3t-b3G" secondAttribute="bottom" id="r2r-Co-ewM"/>

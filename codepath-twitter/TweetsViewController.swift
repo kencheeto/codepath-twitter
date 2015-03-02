@@ -30,7 +30,6 @@ class TweetsViewController: UIViewController {
     refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
     tableView.insertSubview(refreshControl, atIndex: 0)
 
-    menuGesture.delegate = self
     menuView.hidden = true
     menuViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController") as MenuViewController
     
@@ -93,9 +92,4 @@ extension TweetsViewController: UITableViewDataSource {
       vc.tweet = cell.tweet
     }
   }
-}
-
-// MARK: - UIGestureRecognizerDelegate
-extension TweetsViewController: UIGestureRecognizerDelegate {
-  
 }
