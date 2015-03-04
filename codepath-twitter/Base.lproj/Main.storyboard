@@ -115,7 +115,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="VF2-rc-2Vq" appends="YES" id="sVO-Ds-ChA"/>
+                                    <outletCollection property="gestureRecognizers" destination="A2x-W9-lco" appends="YES" id="GZA-8H-QEK"/>
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-W7-efN">
@@ -153,9 +153,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="fFT-A5-RKZ" appends="YES" id="SWl-pN-yHr"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <constraints>
@@ -174,16 +171,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnh-PC-QQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="fFT-A5-RKZ">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="A2x-W9-lco">
                     <connections>
-                        <action selector="swipedRight:" destination="rG2-YY-RgY" id="1U1-7i-hGL"/>
+                        <action selector="didPan:" destination="rG2-YY-RgY" id="h9r-fs-1Ai"/>
                     </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="VF2-rc-2Vq">
-                    <connections>
-                        <action selector="swipedLeft:" destination="rG2-YY-RgY" id="kBK-5I-RAu"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1076" y="-412"/>
         </scene>

@@ -13,6 +13,12 @@ class ContainerViewController: UIViewController {
   @IBOutlet weak var menuTableView: UITableView!
   @IBOutlet weak var containerView: UIView!
   
+  var hiddenMenuX: CGFloat!
+  var menuY: CGFloat!
+  var shownMenuX: CGFloat!
+  var normalContainerX: CGFloat!
+  var containerY: CGFloat!
+
   var mainNavController = UIStoryboard(
     name: "Main",
     bundle: NSBundle.mainBundle()
@@ -32,24 +38,36 @@ class ContainerViewController: UIViewController {
     
     mainNavController.view.frame = containerView.bounds
 
+    var menuWidth = menuTableView.frame.size.width
+    hiddenMenuX = menuTableView.center.x - menuWidth
+     
     println("view did load")
     containerView.addSubview(mainNavController.view)
   }
 
   override func viewDidAppear(animated: Bool) {
     println("view did appear")
-    menuTableView.hidden = true
+    menuY = menuTableView.center.y
+    containerY = containerView.center.y
+    menuTableView.center = CGPoint(x: hiddenMenuX, y: menuY)
   }
-  
-  @IBAction func swipedRight(sender: UISwipeGestureRecognizer) {
-    println("swipe right")
-    menuTableView.hidden = false
+
+  @IBAction func didPan(sender: UIPanGestureRecognizer) {
+    var velocity = sender.velocityInView(view).x
+    var location = sender.locationInView(view)
+    
+    if sender.state == UIGestureRecognizerState.Began {
+      shownMenuX = menuTableView.center.x
+      normalContainerX = containerView.center.x
+    } else if sender.state == UIGestureRecognizerState.Changed {
+      menuTableView.center = CGPoint(x: hiddenMenuX + location.x, y: menuY)
+      containerView.center = CGPoint(x: normalContainerX + location.x, y: containerY)
+    } else if sender.state == UIGestureRecognizerState.Ended {
+      menuTableView.center = CGPoint(x: hiddenMenuX, y: menuY)
+      containerView.center = CGPoint(x: normalContainerX, y: containerY)
+    }
   }
-  
-  @IBAction func swipedLeft(sender: UISwipeGestureRecognizer) {
-    println("swipe left")
-    menuTableView.hidden = true
-  }
+
 }
 
 extension ContainerViewController: UITableViewDataSource {
