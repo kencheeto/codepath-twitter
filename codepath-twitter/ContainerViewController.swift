@@ -17,8 +17,10 @@ class ContainerViewController: UIViewController {
   var menuY: CGFloat!
   var shownMenuX: CGFloat!
   var normalContainerX: CGFloat!
+  var shiftedContainerX: CGFloat!
   var containerY: CGFloat!
-
+  var menuWidth: CGFloat!
+  
   var mainNavController = UIStoryboard(
     name: "Main",
     bundle: NSBundle.mainBundle()
@@ -38,9 +40,11 @@ class ContainerViewController: UIViewController {
     
     mainNavController.view.frame = containerView.bounds
 
-    var menuWidth = menuTableView.frame.size.width
+    menuWidth = menuTableView.frame.size.width
     hiddenMenuX = menuTableView.center.x - menuWidth
-     
+    shiftedContainerX = containerView.center.x + menuWidth
+
+    
     println("view did load")
     containerView.addSubview(mainNavController.view)
   }
@@ -49,6 +53,9 @@ class ContainerViewController: UIViewController {
     println("view did appear")
     menuY = menuTableView.center.y
     containerY = containerView.center.y
+    shownMenuX = menuTableView.center.x
+    normalContainerX = containerView.center.x
+    shiftedContainerX = normalContainerX + menuWidth
     menuTableView.center = CGPoint(x: hiddenMenuX, y: menuY)
   }
 
@@ -57,14 +64,19 @@ class ContainerViewController: UIViewController {
     var location = sender.locationInView(view)
     
     if sender.state == UIGestureRecognizerState.Began {
-      shownMenuX = menuTableView.center.x
-      normalContainerX = containerView.center.x
+//      startMenuX = menuTableView.center.x
+//      startContainerX = containerView.center.x
     } else if sender.state == UIGestureRecognizerState.Changed {
       menuTableView.center = CGPoint(x: hiddenMenuX + location.x, y: menuY)
       containerView.center = CGPoint(x: normalContainerX + location.x, y: containerY)
     } else if sender.state == UIGestureRecognizerState.Ended {
-      menuTableView.center = CGPoint(x: hiddenMenuX, y: menuY)
-      containerView.center = CGPoint(x: normalContainerX, y: containerY)
+      if velocity > 0 {
+        menuTableView.center = CGPoint(x: shownMenuX, y: menuY)
+        containerView.center = CGPoint(x: shiftedContainerX, y: containerY)
+      } else {
+        menuTableView.center = CGPoint(x: hiddenMenuX, y: menuY)
+        containerView.center = CGPoint(x: normalContainerX, y: containerY)
+      }
     }
   }
 
