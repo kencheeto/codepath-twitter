@@ -16,6 +16,9 @@ class ProfileViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    tableView.dataSource = self
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 80
     // Do any additional setup after loading the view.
   }
 
@@ -30,10 +33,13 @@ extension ProfileViewController: UITableViewDataSource {
     if indexPath.row == 0 {
       var headerCell = tableView.dequeueReusableCellWithIdentifier("ProfileHeaderCell") as ProfileHeaderCell
       headerCell.headerImage.setImageWithURL(user!.profileBackgroundImageUrl)
+
       return headerCell
-    } else {
+    } else if indexPath.row == 1 {
       var infoCell = tableView.dequeueReusableCellWithIdentifier("ProfileInfoCell") as ProfileInfoCell
+      infoCell.user = user
       return infoCell
     }
+    return UITableViewCell()
   }
 }

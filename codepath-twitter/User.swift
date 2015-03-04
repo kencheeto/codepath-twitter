@@ -41,6 +41,18 @@ class User: NSObject {
     return NSURL(string: url)!
   }
   
+  var statusesCount: Int {
+    return dictionary["statuses_count"] as Int
+  }
+  
+  var followersCount: Int {
+    return dictionary["followers_count"] as Int
+  }
+  
+  var followingCount: Int {
+    return dictionary["friends_count"] as Int
+  }
+  
   func logout() {
     User.currentUser = nil
     TwitterClient.sharedInstance.requestSerializer.removeAccessToken()

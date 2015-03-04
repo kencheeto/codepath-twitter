@@ -43,7 +43,6 @@ class ContainerViewController: UIViewController {
     menuWidth = menuTableView.frame.size.width
     hiddenMenuX = menuTableView.center.x - menuWidth
     shiftedContainerX = containerView.center.x + menuWidth
-
     
     println("view did load")
     containerView.addSubview(mainNavController.view)
@@ -63,10 +62,7 @@ class ContainerViewController: UIViewController {
     var velocity = sender.velocityInView(view).x
     var location = sender.locationInView(view)
     
-    if sender.state == UIGestureRecognizerState.Began {
-//      startMenuX = menuTableView.center.x
-//      startContainerX = containerView.center.x
-    } else if sender.state == UIGestureRecognizerState.Changed {
+    if sender.state == UIGestureRecognizerState.Changed {
       menuTableView.center = CGPoint(x: hiddenMenuX + location.x, y: menuY)
       containerView.center = CGPoint(x: normalContainerX + location.x, y: containerY)
     } else if sender.state == UIGestureRecognizerState.Ended {
@@ -97,6 +93,8 @@ extension ContainerViewController: UITableViewDataSource {
 extension ContainerViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let link = links[indexPath.row]
+    menuTableView.center = CGPoint(x: hiddenMenuX, y: menuY)
+    containerView.center = CGPoint(x: normalContainerX, y: containerY)
     if link == "Profile" {
       let profileViewController = storyboard!.instantiateViewControllerWithIdentifier("ProfileViewController") as ProfileViewController
       profileViewController.user = User.currentUser

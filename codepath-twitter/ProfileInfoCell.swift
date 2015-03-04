@@ -9,16 +9,31 @@
 import UIKit
 
 class ProfileInfoCell: UITableViewCell {
+  
+  @IBOutlet weak var followersLabel: UILabel!
+  @IBOutlet weak var followingLabel: UILabel!
+  @IBOutlet weak var tweetsLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+  var user: User? {
+    didSet {
+      followersLabel.text = "\(user!.followersCount) followers"
+      followingLabel.text = "following \(user!.followingCount)"
+      tweetsLabel.text = "\(user!.statusesCount) tweets"
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+    separatorInset = UIEdgeInsetsZero
+    preservesSuperviewLayoutMargins = false
+    layoutMargins = UIEdgeInsetsZero
+  }
+  
+  override func setSelected(selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    
+    // Configure the view for the selected state
+  }
+  
 }
